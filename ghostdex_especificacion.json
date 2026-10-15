@@ -1,0 +1,561 @@
+{
+  "specification_version": "1.0.0",
+  "project": "GhostDex",
+  "language": "es-MX",
+  "purpose": "Instrucciones de reconstrucción visual y funcional de interfaz responsive a partir de una captura de referencia.",
+  "source_reference": "bc28a6b3-a0c5-4502-bba6-dc9fa76d7af4.jpeg",
+  "accuracy": {
+    "visual": "Reconstrucción aproximada de la imagen proporcionada; tipografías, color y medidas son estimaciones, no recursos originales.",
+    "functional": "Las pantallas evidencian affordances, no comportamiento comprobado de un sitio en producción.",
+    "assets": "Fondos generados nuevos, inspirados en la referencia; no se incluyen Pokémon, personajes, textos ni componentes de UI."
+  },
+  "design_tokens": {
+    "colors": {
+      "page": "#090817",
+      "surface": "#121225",
+      "surfaceElevated": "#1C1A32",
+      "card": "#1D1D32",
+      "border": "rgba(186,160,235,0.16)",
+      "text": "#F5F1FF",
+      "secondaryText": "#CAC4DB",
+      "muted": "#AAA4C1",
+      "primary": "#A05CEB",
+      "primaryGlow": "#BA70FF",
+      "primaryDark": "#4C2679",
+      "typeGhost": "#6866C7",
+      "typePoison": "#8A368F"
+    },
+    "typography": {
+      "logo": "Cinzel or serif fantasy alternative; prominent uppercase/small-caps purple gradient",
+      "headings": "Cinzel / Cormorant Garamond / Georgia serif",
+      "body": "Inter / Roboto / system-ui sans-serif",
+      "weights": {
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      }
+    },
+    "radii_px": {
+      "device": 30,
+      "card": 14,
+      "search": 22,
+      "chip": 20,
+      "tab": 12,
+      "button": 50
+    },
+    "spacing_px": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      32
+    ],
+    "shadows": {
+      "selected": "0 0 16px rgba(173,93,255,.5), inset 0 0 10px rgba(173,93,255,.18)"
+    },
+    "borders": "1px solid rgba(190,173,233,.15)"
+  },
+  "viewport": {
+    "reference_presentation": "Cuatro pantallas de aspecto iPhone alineadas; cada una aprox. 378x1000 px en el collage de 1536x1024.",
+    "mobile_width_css_px": 390,
+    "mobile_height_reference_css_px": 844,
+    "responsive": "mobile-first; ancho completo en móvil; escritorio requiere adaptación, no mostrada en referencia",
+    "safe_areas": "Dejar padding para status bar y home indicator iOS"
+  },
+  "backgrounds": {
+    "header_catalog": {
+      "file": "header_castillo.png",
+      "placement": "top 0 center",
+      "size": "cover",
+      "height_css_px": 240,
+      "overlay": "linear-gradient(to bottom,rgba(5,5,18,.12),#090817 100%)",
+      "description": "Castillo gótico, noche azul-violeta, luna, nubes y neblina."
+    },
+    "header_checklist": {
+      "file": "header_castillo.png",
+      "placement": "top center",
+      "size": "cover",
+      "height_css_px": 210,
+      "overlay": "linear-gradient(to bottom,rgba(6,5,17,.25),#090817 100%)"
+    },
+    "detail_hero": {
+      "file": "fondo_detalle_movil.png",
+      "placement": "top center",
+      "size": "cover",
+      "height_css_px": 380,
+      "overlay": "linear-gradient(to bottom,transparent 30%,#090817 100%)"
+    },
+    "detail_info": {
+      "file": "niebla_oscura.png",
+      "placement": "center top",
+      "size": "cover",
+      "overlay": "linear-gradient(rgba(8,7,21,.65),rgba(8,7,21,.93))"
+    },
+    "general": {
+      "file": "fondo_general_movil.png",
+      "placement": "center",
+      "size": "cover"
+    }
+  },
+  "global_layout": {
+    "top_status_bar": {
+      "time": "9:41",
+      "icons": [
+        "cellular signal",
+        "wifi",
+        "battery"
+      ],
+      "note": "Mockup device only; usually native browser status bar is not rendered inside web content."
+    },
+    "bottom_navigation": {
+      "fixed": true,
+      "height_css_px": 74,
+      "items": [
+        {
+          "id": "ghostdex",
+          "label": "GhostDex",
+          "icon": "ghost",
+          "route": "/ghostdex"
+        },
+        {
+          "id": "checklist",
+          "label": "Checklist",
+          "icon": "list-checks",
+          "route": "/checklist"
+        },
+        {
+          "id": "progress",
+          "label": "Progreso",
+          "icon": "chart-no-axes-column",
+          "route": "/progreso"
+        },
+        {
+          "id": "tools",
+          "label": "Tools",
+          "icon": "wrench",
+          "route": "/tools"
+        },
+        {
+          "id": "events",
+          "label": "Events",
+          "icon": "calendar-days",
+          "route": "/events"
+        },
+        {
+          "id": "pvp",
+          "label": "PvP",
+          "icon": "swords",
+          "route": "/pvp"
+        },
+        {
+          "id": "pve",
+          "label": "PvE",
+          "icon": "sparkles",
+          "route": "/pve"
+        }
+      ],
+      "active": "purple icon and label",
+      "inactive": "muted lavender icon and label",
+      "visible_on": [
+        "catalog",
+        "checklist"
+      ]
+    },
+    "page_padding_px": 16,
+    "background": "#090817"
+  },
+  "screens": [
+    {
+      "id": "catalog",
+      "name": "GhostDex",
+      "route": "/ghostdex",
+      "active_navigation": "ghostdex",
+      "header": {
+        "title": "GhostDex",
+        "title_styling": "large uppercase fantasy serif with purple gradient",
+        "right_action": {
+          "icon": "menu",
+          "action": "open drawer"
+        }
+      },
+      "controls": {
+        "search": {
+          "placeholder": "Buscar en el grimorio...",
+          "icon": "search",
+          "function": "filter by name or Pokédex number"
+        },
+        "sort": {
+          "icon": "arrow-down-up",
+          "function": "change sort direction/order"
+        },
+        "advanced_filter": {
+          "icon": "filter",
+          "function": "show filtering controls"
+        },
+        "category_chips": [
+          "Todos",
+          "Regionales",
+          "Legendarios",
+          "Míticos"
+        ],
+        "selected_chip": "Todos"
+      },
+      "content": {
+        "layout": "three-column scrollable grid",
+        "gap_px": 10,
+        "card": {
+          "background": "semi-transparent dark purple surface with subtle vertical gradient",
+          "border_radius_px": 14,
+          "min_height_css_px": 145,
+          "centered_image": "Pokemon artwork as separate transparent PNG, never embedded in the background",
+          "number": "#NNN",
+          "name": "bold white below number",
+          "action": "navigate to /pokemon/:pokedexNumber"
+        },
+        "visible_pokemon": [
+          {
+            "number": 92,
+            "name": "Gastly"
+          },
+          {
+            "number": 93,
+            "name": "Haunter"
+          },
+          {
+            "number": 94,
+            "name": "Gengar"
+          },
+          {
+            "number": 200,
+            "name": "Misdreavus"
+          },
+          {
+            "number": 201,
+            "name": "Mismagius"
+          },
+          {
+            "number": 353,
+            "name": "Shuppet"
+          },
+          {
+            "number": 354,
+            "name": "Banette"
+          },
+          {
+            "number": 355,
+            "name": "Duskull"
+          },
+          {
+            "number": 356,
+            "name": "Dusclops"
+          },
+          {
+            "number": 429,
+            "name": "Drifloon"
+          },
+          {
+            "number": 430,
+            "name": "Drifblim"
+          },
+          {
+            "number": 442,
+            "name": "Spiritomb"
+          }
+        ]
+      }
+    },
+    {
+      "id": "checklist",
+      "name": "Checklist",
+      "route": "/checklist",
+      "active_navigation": "checklist",
+      "header": {
+        "title": "Checklist",
+        "right_action": {
+          "icon": "menu",
+          "action": "open drawer"
+        }
+      },
+      "controls": {
+        "search": {
+          "placeholder": "Buscar en el grimorio..."
+        },
+        "sort": {
+          "icon": "arrow-down-up"
+        },
+        "advanced_filter": {
+          "icon": "filter"
+        },
+        "status_chips": [
+          "Todos",
+          "Pendientes",
+          "Registrados",
+          "Shiny"
+        ],
+        "selected_chip": "Todos"
+      },
+      "content": {
+        "layout": "three-column scrollable grid",
+        "card": "same as catalog plus checkbox in upper-right corner",
+        "checkbox_state": "checked purple solid square and white tick; unchecked light outlined square",
+        "examples": {
+          "checked": [
+            92,
+            94
+          ],
+          "unchecked": [
+            93,
+            200,
+            201,
+            353,
+            354,
+            355,
+            356,
+            429,
+            430,
+            442
+          ]
+        },
+        "persistence": "Persist collection membership per pokemon ID in storage/backend; UI mock does not specify actual implementation."
+      }
+    },
+    {
+      "id": "detail_collection",
+      "name": "Ficha de Pokémon / Colección",
+      "route": "/pokemon/92?tab=coleccion",
+      "header": {
+        "back_button": true,
+        "pokedex_number": "#092",
+        "favorite_star": {
+          "shape": "outlined five-point star",
+          "position": "top right",
+          "action": "toggle favorite"
+        },
+        "background_asset": "detail_hero"
+      },
+      "hero": {
+        "pokemon_artwork": "Large separate transparent image centered against clouds; do not include in background asset",
+        "name": "Gastly",
+        "type_badges": [
+          "FANTASMA",
+          "VENENO"
+        ]
+      },
+      "tabs": [
+        "Colección",
+        "Info",
+        "Battle",
+        "Ejemplares"
+      ],
+      "selected_tab": "Colección",
+      "sections": [
+        {
+          "title": "Variantes",
+          "type": "grid",
+          "columns": 3,
+          "cards": [
+            {
+              "label": "Normal",
+              "checked": true
+            },
+            {
+              "label": "Shiny",
+              "checked": true
+            },
+            {
+              "label": "Lucky",
+              "checked": false
+            },
+            {
+              "label": "Oscuro",
+              "checked": false
+            },
+            {
+              "label": "Purificado",
+              "checked": false
+            },
+            {
+              "label": "XXS",
+              "checked": false
+            },
+            {
+              "label": "XXL",
+              "checked": false
+            }
+          ]
+        },
+        {
+          "title": "Disfraces",
+          "type": "grid",
+          "columns": 4,
+          "cards": [
+            {
+              "label": "Normal",
+              "checked": false
+            },
+            {
+              "label": "Shiny",
+              "checked": false
+            },
+            {
+              "label": "Disfraz",
+              "checked": false
+            },
+            {
+              "label": "Disfraz Shiny",
+              "checked": false
+            }
+          ]
+        }
+      ],
+      "body": "rounded top panel dark plum with card grids, scrolling below hero"
+    },
+    {
+      "id": "detail_info",
+      "name": "Ficha de Pokémon / Info",
+      "route": "/pokemon/92?tab=info",
+      "header": {
+        "back_button": true,
+        "pokedex_number": "#092",
+        "favorite_star": true,
+        "background_asset": "detail_info"
+      },
+      "hero": {
+        "pokemon_artwork": "separate image centered, with dark translucent veil in this state",
+        "name": "Gastly",
+        "type_badges": [
+          "FANTASMA",
+          "VENENO"
+        ]
+      },
+      "tabs": [
+        "Colección",
+        "Info",
+        "Battle",
+        "Ejemplares"
+      ],
+      "selected_tab": "Info",
+      "sections": [
+        {
+          "title": "Descripción Pokédex",
+          "text": "Su cuerpo está compuesto por gas. Puede envolver a sus presas y hacer que se desmayen sin que se den cuenta."
+        },
+        {
+          "title": "Medidas",
+          "fields": [
+            {
+              "label": "Altura",
+              "value": "1.3 m"
+            },
+            {
+              "label": "Peso",
+              "value": "0.1 kg"
+            }
+          ]
+        },
+        {
+          "title": "Evoluciones",
+          "steps": [
+            {
+              "number": 92,
+              "name": "Gastly"
+            },
+            {
+              "number": 93,
+              "name": "Haunter"
+            },
+            {
+              "number": 94,
+              "name": "Gengar"
+            }
+          ],
+          "display": "horizontal icons and arrows"
+        },
+        {
+          "title": "Otros datos",
+          "rows": [
+            {
+              "label": "Generación",
+              "value": "I"
+            },
+            {
+              "label": "Región",
+              "value": "Kanto"
+            },
+            {
+              "label": "Captura",
+              "value": "Silvestre, Huevos (eventos)"
+            },
+            {
+              "label": "Tipos",
+              "value": "Fantasma / Veneno"
+            },
+            {
+              "label": "Debilidades",
+              "value": [
+                "Tierra",
+                "Psíquico",
+                "Siniestro",
+                "Fantasma"
+              ]
+            }
+          ]
+        }
+      ],
+      "style": "full-bleed atmospheric header; content on midnight-dark overlay with white section headings and thin lavender divider lines"
+    }
+  ],
+  "behaviors": {
+    "search": "case-insensitive name/ID filter with instant feedback",
+    "chips": "single selected chip per group",
+    "sorting": "sort by Pokédex number or configurable",
+    "favorites": "toggle star state",
+    "checklist": "checkbox state independent per Pokemon or variant",
+    "tabs": "update selected content without losing current Pokemon ID",
+    "scroll": "vertical and avoid overlap with bottom navigation",
+    "routes": "URLs are suggested, not observed"
+  },
+  "data_model": {
+    "Pokemon": {
+      "id": "integer",
+      "name": "string",
+      "types": "string[]",
+      "region": "string",
+      "generation": "string|integer",
+      "height_m": "number",
+      "weight_kg": "number",
+      "description": "string",
+      "weaknesses": "string[]",
+      "evolutions": "integer[]",
+      "sprite_url": "string",
+      "is_favorite": "boolean",
+      "variants": "Variant[]",
+      "costumes": "Variant[]"
+    },
+    "Variant": {
+      "id": "string",
+      "label": "string",
+      "image_url": "string",
+      "registered": "boolean"
+    }
+  },
+  "accessibility": {
+    "contrast": "WCAG AA where practical; decorative art behind gradients",
+    "buttons": "minimum interactive target 44x44 px",
+    "images": "descriptive alt for Pokemon, empty alt for decorative backgrounds",
+    "navigation": "aria-current page and tabs role=tablist",
+    "checkboxes": "visible keyboard focus"
+  },
+  "implementation_instructions_for_ai": [
+    "Build mobile-first HTML/CSS/React views from these four states.",
+    "Use the provided background PNG files exclusively as decorative layers.",
+    "Do not place Pokémon art, text, search elements or cards into the CSS background.",
+    "Use data-driven reusable components: SearchBar, FilterChips, PokemonCard, BottomNav, DetailHero, TabBar, VariantCard and InfoSection.",
+    "Provide real transparent-character assets from a properly licensed Pokemon source separately; none are included here.",
+    "All measurements are visual estimates from a composite screenshot; verify on target device.",
+    "Do not fabricate data for other Pokémon or unsupported tabs; show placeholders until sourced."
+  ]
+}
